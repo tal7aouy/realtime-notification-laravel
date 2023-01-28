@@ -48,6 +48,7 @@ const showingNavigationDropdown = ref(false);
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+              <slot name="notify" />
               <!-- Settings Dropdown -->
               <div class="ml-3 relative">
                 <Dropdown align="right" width="48">

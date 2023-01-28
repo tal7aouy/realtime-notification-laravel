@@ -2,6 +2,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, router } from "@inertiajs/vue3";
 import PostNotify from "./PostNotify.vue";
+import Notify from "@/Components/Notify.vue";
 const { posts, notifications } = defineProps({
   posts: Array,
   notifications: Array,
@@ -18,7 +19,12 @@ function LikePost(id) {
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">Posts</h2>
     </template>
-
+    <template #notify>
+      <Notify
+        :user="$page.props.auth.user"
+        :user_notifications="notifications"
+      />
+    </template>
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -35,10 +41,11 @@ function LikePost(id) {
                 overflow-hidden
               "
             >
-              <PostNotify
+              <!-- <PostNotify
                 :user="$page.props.auth.user"
                 :user_notifications="notifications"
-              />
+              /> -->
+
               <div class="w-full lg:w-5/6">
                 <div class="bg-white shadow-md rounded my-6">
                   <table class="min-w-max w-full table-auto">
